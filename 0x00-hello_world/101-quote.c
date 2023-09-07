@@ -1,20 +1,20 @@
+/*
+ * File: 101-quote.c
+ */
+
 #include <unistd.h>
 
 /**
- * main - Entry point
+ * main - Prints "and that piece of art is useful" - Dora Korpar, 2015-10-19",
+ *                followed by a new line, to standard error.
  *
- * Description: Prints the quote "and that piece of art is useful" - Dora Korpar, 2015-10-19
- *
- * Return: Always 1 (Error code)
+ * Return: Always 1.
  */
 int main(void)
 {
-    char *quote = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-    ssize_t len = 59; // Length of the quote
+	write(2,
+	      "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n",
+	      59);
 
-    // Write the quote to the standard error stream (file descriptor 2)
-    if (write(2, quote, len) != len)
-        return (1); // Return an error code if not all bytes were written
-
-    return (0);
+	return (1);
 }
