@@ -1,8 +1,3 @@
-/*
- * File: 3-print_alphabets.c
- * Auth: 
- */
-
 #include <stdio.h>
 
 /**
