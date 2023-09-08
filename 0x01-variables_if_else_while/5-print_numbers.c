@@ -1,18 +1,19 @@
 #include <stdio.h>
-
 /**
- *main -> assign a random number.
- *and print the last digit  number stored 
- *Return: Always 0 (Success)
+ * main - print numbers of base ten
+ *
+ * Return: always (0)
+ *
  */
 int main(void)
 {
-int n;
+	char base_ten = '0';
 
-for (n = 0; n < 10; n++)
-{
-printf("%d", n);
-}
-printf("\n");
-return (0);
+	while (base_ten <= '9')
+	{
+		putchar(base_ten);
+		base_ten++;
+	}
+	putchar('\n');
+	return (0);
 }
