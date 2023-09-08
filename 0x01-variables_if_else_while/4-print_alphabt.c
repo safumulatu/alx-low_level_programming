@@ -1,6 +1,6 @@
 /*
  * File: 3-print_alphabets.c
- * Auth
+ * Auth: s m
  */
 
 #include <stdio.h>
