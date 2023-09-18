@@ -5,7 +5,6 @@
  * @s: character of strings
  *
  * Return: (0)
- * owned by Safu 
  */
 int _strlen(char *s)
 {
