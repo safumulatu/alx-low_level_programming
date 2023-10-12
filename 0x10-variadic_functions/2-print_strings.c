@@ -1,38 +1,49 @@
 #include "variadic_functions.h"
-#include <stdio.h>
-#include <stdarg.h>
-
 /**
- * print_strings - Prints strings, followed by a new line.
- * @separator: The string to be printed between strings.
- * @n: The number of strings passed to the function.
- * @...: A variable number of strings to be printed.
+ * print_all - print any argument provided
+ * @format: argument specifier
  *
- * Description: If separator is NULL, it is not printed.
- *              If one of the strings if NULL, (nil) is printed instead.
+ * Return: any argument given based on specified format
  */
-void print_strings(const char *separator, const unsigned int n, ...)
+void print_all(const char * const format, ...)
 {
-	va_list strings;
+	int i, check_stat; /* declare variables and va_arg datatype */
 	char *str;
-	unsigned int index;
+	va_list spc;
 
-	va_start(strings, n);
-
-	for (index = 0; index < n; index++)
+	va_start(spc, format); /* initilaize var arguments */
+	i = 0;
+	while (format != NULL && format[i] != '\0')
 	{
-		str = va_arg(strings, char *);
-
-		if (str == NULL)
-			printf("(nil)");
-		else
-			printf("%s", str);
-
-		if (index != (n - 1) && separator != NULL)
-			printf("%s", separator);
+		switch (format[i])
+		{
+			case 'i':
+				printf("%d", va_arg(spc, int));
+				check_stat = 0; /* check if condition has been met */
+				break;
+			case 'f':
+				printf("%f", va_arg(spc, double));
+				check_stat = 0;
+				break;
+			case 'c':
+				printf("%c", va_arg(spc, int));
+				check_stat = 0;
+				break;
+			case 's':
+				str = va_arg(spc, char *);
+				if (str == NULL)
+					str = "(nil)";
+				printf("%s", str);
+				check_stat = 0;
+				break;
+			default:
+				check_stat = 1;
+				break;
+		}
+		if (format[i +  1] != '\0' && check_stat == 0) /* if NOT NULL */
+			printf(", ");
+		i++; /* update step of iter var */
 	}
-
 	printf("\n");
-
-	va_end(strings);
+	va_end(spc); /* end traversal */
 }
